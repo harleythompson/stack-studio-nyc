@@ -283,19 +283,25 @@ nav {
 /* Masonry-ish grid */
 .work-grid {
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: auto;
+  grid-template-columns: 5fr 3fr 4fr;
+  grid-template-rows: 420px 300px;
   gap: 4px;
 }
 
 .wi { position: relative; overflow: hidden; background: #f0f0f0; }
+.wi-a { grid-column: 1; grid-row: 1 / 3; }
+.wi-b { grid-column: 2; grid-row: 1; }
+.wi-c { grid-column: 3; grid-row: 1; }
+.wi-d { grid-column: 2; grid-row: 2; }
+.wi-e { grid-column: 3; grid-row: 2; }
+
+.wi-photo {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .7s cubic-bezier(.22,.68,0,1.2);
+}
 .wi:hover .wi-photo { transform: scale(1.05); }
-.work-grid { grid-template-rows: 400px 280px; }
-.wi-a { grid-column: 1 / 6;  grid-row: 1 / 3; }
-.wi-b { grid-column: 6 / 9;  grid-row: 1;     }
-.wi-c { grid-column: 9 / 13; grid-row: 1;     }
-.wi-d { grid-column: 6 / 10; grid-row: 2;     }
-.wi-e { grid-column: 10 / 13;grid-row: 2;     }
 
 .wi-bg {
   width: 100%; height: 100%;
@@ -741,7 +747,7 @@ footer {
   <div class="work-grid reveal">
     <!-- Large left: full range flat lay -->
     <div class="wi wi-a">
-      <img src="img3.jpg" alt="Five Wits full range" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .7s cubic-bezier(.22,.68,0,1.2);" class="wi-photo">
+      <img src="img3.jpg" alt="Five Wits full range" class="wi-photo">
       <span class="wi-num">01</span>
       <div class="wi-info">
         <h3>Full Range</h3>
@@ -750,7 +756,7 @@ footer {
     </div>
     <!-- Top right: beach hair kit -->
     <div class="wi wi-b">
-      <img src="img1.jpg" alt="Five Wits Beach Hair Kit" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .7s cubic-bezier(.22,.68,0,1.2);" class="wi-photo">
+      <img src="img1.jpg" alt="Five Wits Beach Hair Kit" class="wi-photo">
       <span class="wi-num">02</span>
       <div class="wi-info">
         <h3>Beach Hair Kit</h3>
@@ -759,7 +765,7 @@ footer {
     </div>
     <!-- Top far right: can't go wrong kit -->
     <div class="wi wi-c">
-      <img src="img2.jpg" alt="Five Wits Can't Go Wrong Kit" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .7s cubic-bezier(.22,.68,0,1.2);" class="wi-photo">
+      <img src="img2.jpg" alt="Five Wits Can't Go Wrong Kit" class="wi-photo">
       <span class="wi-num">03</span>
       <div class="wi-info">
         <h3>Can't Go Wrong Kit</h3>
@@ -768,7 +774,7 @@ footer {
     </div>
     <!-- Bottom mid: beach hair kit alternate crop -->
     <div class="wi wi-d">
-      <img src="img1.jpg" alt="Five Wits Beach Hair Kit detail" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;transition:transform .7s cubic-bezier(.22,.68,0,1.2);" class="wi-photo">
+      <img src="img1.jpg" alt="Five Wits Beach Hair Kit detail" class="wi-photo">
       <span class="wi-num">04</span>
       <div class="wi-info">
         <h3>Texture Spray</h3>
@@ -777,7 +783,7 @@ footer {
     </div>
     <!-- Bottom right: group alternate crop -->
     <div class="wi wi-e">
-      <img src="img2.jpg" alt="Five Wits Daily Shampoo detail" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%;transition:transform .7s cubic-bezier(.22,.68,0,1.2);" class="wi-photo">
+      <img src="img2.jpg" alt="Five Wits Daily Shampoo detail" class="wi-photo">
       <span class="wi-num">05</span>
       <div class="wi-info">
         <h3>Daily Duo</h3>
