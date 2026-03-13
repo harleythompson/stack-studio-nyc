@@ -28,10 +28,12 @@ body {
   color: var(--ink);
   font-family: var(--sans);
   font-size: 15px;
-  line-height: 1.65; font-weight: 400;
+  line-height: 1.65;
+  font-weight: 400;
   overflow-x: hidden;
-  cursor: none;
+  cursor: auto;
 }
+.js-ready { cursor: none; }
 
 /* ── CURSOR ── */
 .cur {
@@ -618,10 +620,13 @@ footer {
 }
 
 .reveal {
-  opacity: 0; transform: translateY(28px);
+  opacity: 1; transform: translateY(0);
   transition: opacity .75s ease, transform .75s ease;
 }
-.reveal.in { opacity: 1; transform: translateY(0); }
+.js-ready .reveal {
+  opacity: 0; transform: translateY(28px);
+}
+.js-ready .reveal.in { opacity: 1; transform: translateY(0); }
 .d1 { transition-delay: .1s; }
 .d2 { transition-delay: .2s; }
 .d3 { transition-delay: .3s; }
@@ -995,6 +1000,9 @@ footer {
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+// Mark body as JS ready — enables reveal animations and custom cursor
+document.body.classList.add('js-ready');
+
 // Custom cursor
 const cur = document.getElementById('cur');
 let mx = 0, my = 0, cx = 0, cy = 0;
