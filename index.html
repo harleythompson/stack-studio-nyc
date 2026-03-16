@@ -670,18 +670,87 @@ footer {
 }
 
 @media (max-width: 768px) {
-  nav { padding: 0 24px; }
+  /* Nav */
+  nav { padding: 0 20px; }
   .nav-mid { display: none; }
-  .section-work, .section-services, .section-process { padding: 80px 24px; }
-  .contact-l, .contact-r { padding: 72px 24px; }
-  .about-copy { padding: 64px 24px; }
-  .work-grid {
-    grid-template-columns: 1fr 1fr;
+  .nav-book { font-size: 11px; }
+
+  /* Hero */
+  .hero-copy { padding: 80px 24px 48px; }
+  .hero-stage { grid-template-columns: 1fr; }
+  .hero-visual { min-height: 280px; }
+
+  /* Sections */
+  .section-work { padding: 64px 0; }
+  .section-work .sec-head { padding: 0 20px 24px; margin-bottom: 24px; }
+  .section-services, .section-process { padding: 64px 20px; }
+  .contact-l, .contact-r { padding: 56px 20px; }
+  .about-copy { padding: 48px 20px; }
+  .about-visual { min-height: 320px; }
+
+  /* All portfolio grid rows — stack to 1 column on mobile */
+  [style*="grid-template-columns: 1fr 1fr 1fr"] ,
+  [style*="grid-template-columns: 1fr 1fr 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr 1fr 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+    height: auto !important;
   }
-  .wi-a { grid-column: 1 / 3; grid-row: 1; aspect-ratio: 3/2; }
-  .wi-b, .wi-c, .wi-d, .wi-e { grid-column: span 1; grid-row: auto; aspect-ratio: 1; }
+
+  /* Two-column haircare row stays 1fr 1fr but taller */
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr 1fr !important;
+    height: auto !important;
+  }
+
+  /* All work items get a fixed height on mobile */
+  .wi {
+    height: 220px;
+  }
+
+  /* Fine jewelry and sunglasses rows — single column on very small screens */
+  .srv-grid { grid-template-columns: 1fr; }
   .process-row { grid-template-columns: 1fr; }
-  footer { flex-direction: column; gap: 20px; text-align: center; }
+
+  /* Services */
+  .srv { padding: 36px 24px; }
+
+  /* Process */
+  .step { padding: 32px 24px; }
+
+  /* Contact */
+  .section-contact { grid-template-columns: 1fr; }
+  .contact-r { background: var(--warm); }
+  .f-row { grid-template-columns: 1fr; }
+
+  /* Footer */
+  footer { flex-direction: column; gap: 20px; text-align: center; padding: 40px 20px; }
+
+  /* Hide custom cursor on touch */
+  .cur { display: none; }
+  body { cursor: auto !important; }
+
+  /* Ticker smaller */
+  .ticker-item { font-size: 10px; padding: 0 20px; }
+}
+
+@media (max-width: 480px) {
+  /* On very small phones, go single column for portfolio */
+  [style*="grid-template-columns: 1fr 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr 1fr 1fr"],
+  [style*="grid-template-columns: 1fr 1fr 1fr 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+  [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    height: auto !important;
+  }
+  .wi { height: 260px; }
+
+  .hero-h1 { font-size: 48px; }
+  .sec-title { font-size: 32px; }
+  .sec-count { display: none; }
 }
 
 </style>
