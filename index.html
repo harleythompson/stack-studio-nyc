@@ -1099,14 +1099,17 @@ footer {
       </div>
       <button type="submit" class="f-submit">Send inquiry →</button>
     </form>
-
-    <!-- Success message (shown after submit) -->
-    <div id="form-success" style="display:none; padding: 48px 0;">
-      <p style="font-family: var(--serif); font-size: 36px; letter-spacing:.04em; margin-bottom:16px; color: var(--ink);">Message sent.</p>
-      <p style="font-size:15px; color: var(--mid); line-height:1.8;">Thanks for reaching out — we'll be in touch within one business day.</p>
-    </div>
   </div>
 </section>
+
+<!-- ══ SUCCESS OVERLAY ══ -->
+<div id="form-success" style="display:none; position:fixed; inset:0; background:rgba(26,24,21,0.8); z-index:9000; align-items:center; justify-content:center;">
+  <div style="background:#ffffff; padding:56px 64px; max-width:460px; width:88%; text-align:center;">
+    <p style="font-family:'Bebas Neue',sans-serif; font-size:44px; letter-spacing:.06em; margin-bottom:16px; color:#1A1815;">Message Sent</p>
+    <p style="font-size:15px; color:#6B6560; line-height:1.8; margin-bottom:40px;">Thanks for reaching out — we'll be in touch within one business day.</p>
+    <button onclick="document.getElementById('form-success').style.display='none'" style="background:#1A1815; color:#fff; border:none; padding:16px 40px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; cursor:pointer;">Close ×</button>
+  </div>
+</div>
 
 <!-- ══ FOOTER ══ -->
 <footer>
@@ -1140,16 +1143,14 @@ document.querySelectorAll('.f-submit, .btn-fill, .nav-book').forEach(el => {
   el.addEventListener('mouseleave', () => { cur.classList.remove('big'); cur.classList.remove('inv'); });
 });
 
-// Netlify form — show success immediately, submit in background
+// Netlify form — show overlay immediately, submit in background
 const form = document.querySelector('form[name="inquiry"]');
 const success = document.getElementById('form-success');
 if (form) {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
-    // Show confirmation immediately
-    form.style.display = 'none';
-    success.style.display = 'block';
-    success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    // Show overlay immediately — don't wait for fetch
+    success.style.display = 'flex';
     // Submit to Netlify in background
     const data = new URLSearchParams();
     new FormData(form).forEach((val, key) => data.append(key, val));
