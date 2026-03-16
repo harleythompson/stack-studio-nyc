@@ -51,22 +51,24 @@ body {
 /* ── CURSOR ── */
 .cur {
   position: fixed;
-  width: 10px; height: 10px;
-  background: var(--ink);
-  border: 2px solid var(--bg);
-  box-shadow: 0 0 0 1px var(--ink);
+  width: 12px; height: 12px;
+  background: #ffffff;
+  border: 2px solid var(--ink);
   border-radius: 50%;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%,-50%);
-  transition: width .25s, height .25s, opacity .25s;
+  transition: width .25s, height .25s, transform .25s;
   mix-blend-mode: normal;
 }
 .cur.big {
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   background: transparent;
-  border: 1.5px solid var(--ink);
-  box-shadow: 0 0 0 1px transparent;
+  border: 2px solid var(--ink);
+}
+.cur.inv {
+  background: rgba(255,255,255,0.9);
+  border-color: rgba(255,255,255,0.9);
 }
 
 /* ── NAV ── */
@@ -1128,9 +1130,14 @@ document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; })
   cur.style.top  = cy + 'px';
   requestAnimationFrame(loop);
 })();
-document.querySelectorAll('a, button, .wi, .srv').forEach(el => {
+document.querySelectorAll('a, .wi, .srv').forEach(el => {
   el.addEventListener('mouseenter', () => cur.classList.add('big'));
   el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+// On dark elements (submit button, nav book), invert cursor to white
+document.querySelectorAll('.f-submit, .btn-fill, .nav-book').forEach(el => {
+  el.addEventListener('mouseenter', () => { cur.classList.add('big'); cur.classList.add('inv'); });
+  el.addEventListener('mouseleave', () => { cur.classList.remove('big'); cur.classList.remove('inv'); });
 });
 
 // Netlify form — show success immediately, submit in background
