@@ -1059,7 +1059,7 @@ footer {
     </dl>
   </div>
   <div class="contact-r reveal d1">
-    <form class="contact-form" name="inquiry" method="POST" action="#contact" data-netlify="true" netlify-honeypot="bot-field" onsubmit="event.preventDefault(); document.getElementById('form-success').style.display='flex'; var d=new URLSearchParams(); new FormData(this).forEach(function(v,k){d.append(k,v)}); fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:d.toString()}); return false;">
+    <form class="contact-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
       <!-- Netlify spam filter -->
       <input type="hidden" name="form-name" value="inquiry">
       <input type="hidden" name="_replyto" value="info@stackstudionyc.com">
@@ -1143,19 +1143,10 @@ document.querySelectorAll('.f-submit, .btn-fill, .nav-book').forEach(el => {
   el.addEventListener('mouseleave', () => { cur.classList.remove('big'); cur.classList.remove('inv'); });
 });
 
-// Netlify form — show overlay immediately, submit in background
-const form = document.querySelector('form[name="inquiry"]');
-const success = document.getElementById('form-success');
-if (form) {
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    success.style.display = 'flex';
-    const data = new URLSearchParams();
-    new FormData(form).forEach((val, key) => data.append(key, val));
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: data.toString()
-    });
-  });
-}
+// Form
+document.querySelector('form[name="inquiry"]').addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById('form-success').style.display = 'flex';
+  var d = new URLSearchParams(new FormData(this));
+  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: d.toString() });
+});
