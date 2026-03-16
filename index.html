@@ -57,7 +57,7 @@ body {
   z-index: 9999;
   transform: translate(-50%,-50%);
   transition: width .25s, height .25s, background .25s, border-radius .25s;
-  mix-blend-mode: multiply;
+  mix-blend-mode: normal;
 }
 .cur.big {
   width: 48px; height: 48px;
@@ -1040,7 +1040,7 @@ footer {
     <dl class="contact-meta">
       <div>
         <dt>Email</dt>
-        <dd><a href="/cdn-cgi/l/email-protection#d4bdbab2bb94a7a0b5b7bfa7a0a1b0bdbbbaadb7fab7bbb9"><span class="__cf_email__" data-cfemail="cca5a2aaa38cbfb8adafa7bfb8b9a8a5a3a2b5afe2afa3a1">[email&#160;protected]</span></a></dd>
+        <dd><a href="mailto:info@stackstudionyc.com">info@stackstudionyc.com</a></dd>
       </div>
       <div>
         <dt>Instagram</dt>
@@ -1053,7 +1053,7 @@ footer {
     </dl>
   </div>
   <div class="contact-r reveal d1">
-    <form class="contact-form" name="inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="contact-form" name="inquiry" method="POST" action="/?success=true" data-netlify="true" netlify-honeypot="bot-field">
       <!-- Netlify spam filter -->
       <input type="hidden" name="form-name" value="inquiry">
       <input type="hidden" name="_replyto" value="info@stackstudionyc.com">
@@ -1133,4 +1133,16 @@ document.querySelectorAll('a, button, .wi, .srv').forEach(el => {
 const form = document.querySelector('form[name="inquiry"]');
 const success = document.getElementById('form-success');
 if (form) {
-  form.addEvent
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    try {
+      await fetch('/', { method: 'POST', body: data });
+      form.style.display = 'none';
+      success.style.display = 'block';
+    } catch (err) {
+      // fallback — let the form submit normally
+      form.submit();
+    }
+  });
+}
