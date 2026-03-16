@@ -61,8 +61,9 @@ body {
 }
 .cur.big {
   width: 48px; height: 48px;
-  background: var(--accent);
+  background: var(--ink);
   border-radius: 50%;
+  opacity: 0.15;
 }
 
 /* ── NAV ── */
@@ -1136,18 +1137,14 @@ if (form) {
   form.addEventListener('submit', function(e) {
     e.preventDefault();
     e.stopPropagation();
-    const data = new FormData(form);
+    const data = new URLSearchParams();
+    new FormData(form).forEach((val, key) => data.append(key, val));
     fetch('/', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(data).toString()
+      body: data.toString()
     })
-    .then(() => {
-      form.style.display = 'none';
-      success.style.display = 'block';
-      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    })
-    .catch(() => {
+    .finally(() => {
       form.style.display = 'none';
       success.style.display = 'block';
       success.scrollIntoView({ behavior: 'smooth', block: 'center' });
