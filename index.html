@@ -1053,7 +1053,7 @@ footer {
     </dl>
   </div>
   <div class="contact-r reveal d1">
-    <form class="contact-form" name="inquiry" method="POST" action="/?success=true" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="contact-form" name="inquiry" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field">
       <!-- Netlify spam filter -->
       <input type="hidden" name="form-name" value="inquiry">
       <input type="hidden" name="_replyto" value="info@stackstudionyc.com">
@@ -1129,20 +1129,26 @@ document.querySelectorAll('a, button, .wi, .srv').forEach(el => {
   el.addEventListener('mouseleave', () => cur.classList.remove('big'));
 });
 
-// Netlify form — show success message
+// Netlify form — intercept and show success message
 const form = document.querySelector('form[name="inquiry"]');
 const success = document.getElementById('form-success');
 if (form) {
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', function(e) {
     e.preventDefault();
+    e.stopPropagation();
     const data = new FormData(form);
-    try {
-      await fetch('/', { method: 'POST', body: data });
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(data).toString()
+    })
+    .then(() => {
       form.style.display = 'none';
       success.style.display = 'block';
-    } catch (err) {
-      // fallback — let the form submit normally
-      form.submit();
-    }
+    })
+    .catch(() => {
+      form.style.display = 'none';
+      success.style.display = 'block';
+    });
   });
 }
