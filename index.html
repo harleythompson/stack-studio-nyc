@@ -1059,7 +1059,7 @@ footer {
     </dl>
   </div>
   <div class="contact-r reveal d1">
-    <form class="contact-form" name="inquiry" method="POST" action="#contact" data-netlify="true" netlify-honeypot="bot-field">
+    <form class="contact-form" name="inquiry" method="POST" action="#contact" data-netlify="true" netlify-honeypot="bot-field" onsubmit="event.preventDefault(); document.getElementById('form-success').style.display='flex'; var d=new URLSearchParams(); new FormData(this).forEach(function(v,k){d.append(k,v)}); fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:d.toString()}); return false;">
       <!-- Netlify spam filter -->
       <input type="hidden" name="form-name" value="inquiry">
       <input type="hidden" name="_replyto" value="info@stackstudionyc.com">
