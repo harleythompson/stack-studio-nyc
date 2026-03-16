@@ -1095,9 +1095,9 @@ footer {
     </form>
 
     <!-- Success message (shown after submit) -->
-    <div id="form-success" style="display:none; padding: 40px 0;">
-      <p style="font-family: var(--serif); font-size: 28px; letter-spacing:.06em; margin-bottom:12px;">Message sent.</p>
-      <p style="font-size:14px; color: var(--mid); line-height:1.7;">Thanks for reaching out — we'll be in touch within one business day.</p>
+    <div id="form-success" style="display:none; padding: 48px 0;">
+      <p style="font-family: var(--serif); font-size: 36px; letter-spacing:.04em; margin-bottom:16px; color: var(--ink);">Message sent.</p>
+      <p style="font-size:15px; color: var(--mid); line-height:1.8;">Thanks for reaching out — we'll be in touch within one business day.</p>
     </div>
   </div>
 </section>
@@ -1145,10 +1145,12 @@ if (form) {
     .then(() => {
       form.style.display = 'none';
       success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
     })
     .catch(() => {
       form.style.display = 'none';
       success.style.display = 'block';
+      success.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   });
 }
