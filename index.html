@@ -931,7 +931,7 @@ footer {
     
   </div>
 
-  <div class="srv-grid">
+  <div class="srv-grid" style="grid-template-columns: 1fr 1fr;">
     <div class="srv reveal">
       <span class="srv-n">01</span>
       <h3>Product<br><em>Still Life</em></h3>
@@ -946,24 +946,12 @@ footer {
     </div>
     <div class="srv reveal d1">
       <span class="srv-n">02</span>
-      <h3>Editorial<br><em>Campaign</em></h3>
-      <p>Story-driven shoots that give your brand a world to live in. On-model or off — we build images that last beyond the season.</p>
-      <ul class="srv-includes">
-        <li>Creative direction included</li>
-        <li>Location or full studio</li>
-        <li>Art direction & mood boarding</li>
-        <li>Full retouching on finals</li>
-      </ul>
-      <div class="srv-price">From $1,400 / day</div>
-    </div>
-    <div class="srv reveal d2">
-      <span class="srv-n">03</span>
       <h3>E-Commerce<br><em>Package</em></h3>
       <p>High-volume, consistent shots optimised for DTC and wholesale. Every SKU treated with the same care as your hero product.</p>
       <ul class="srv-includes">
         <li>On-white or lifestyle options</li>
         <li>Batch pricing available</li>
-        <li>48hr standard turnaround</li>
+        <li>72hr standard turnaround</li>
         <li>Direct-to-Shopify formatting</li>
       </ul>
       <div class="srv-price">From $60 / image</div>
@@ -1019,11 +1007,11 @@ footer {
         <div class="l">Years in Studio</div>
       </div>
       <div class="stat-box">
-        <div class="n">3</div>
-        <div class="l">Specialisms</div>
+        <div class="n">NYC</div>
+        <div class="l">Based In</div>
       </div>
       <div class="stat-box">
-        <div class="n">48h</div>
+        <div class="n">72h</div>
         <div class="l">Avg. Turnaround</div>
       </div>
     </div>
@@ -1046,7 +1034,7 @@ footer {
     <dl class="contact-meta">
       <div>
         <dt>Email</dt>
-        <dd><a href="mailto:info@stackstudionyc.com">info@stackstudionyc.com</a></dd>
+        <dd><a href="/cdn-cgi/l/email-protection#751c1b131a35060114161e060100111c1a1b0c165b161a18"><span class="__cf_email__" data-cfemail="0e676068614e7d7a6f6d657d7a7b6a676160776d206d6163">[email&#160;protected]</span></a></dd>
       </div>
       <div>
         <dt>Instagram</dt>
@@ -1118,7 +1106,7 @@ footer {
   
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Mark body as JS ready — enables reveal animations and custom cursor
 document.body.classList.add('js-ready');
 
@@ -1145,8 +1133,4 @@ document.querySelectorAll('.f-submit, .btn-fill, .nav-book').forEach(el => {
 
 // Form
 document.querySelector('form[name="inquiry"]').addEventListener('submit', function(e) {
-  e.preventDefault();
-  document.getElementById('form-success').style.display = 'flex';
-  var d = new URLSearchParams(new FormData(this));
-  fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: d.toString() });
-});
+  e.prevent
