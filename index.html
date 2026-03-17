@@ -1034,7 +1034,7 @@ footer {
     <dl class="contact-meta">
       <div>
         <dt>Email</dt>
-        <dd><a id="contact-email" href="#"></a></dd>
+        <dd><a id="contact-email" href="#"></a><script>var e=document.getElementById('contact-email');e.href='mailto:info@stackstudionyc.com';e.textContent='info@stackstudionyc.com';</script></dd>
       </div>
       <div>
         <dt>Instagram</dt>
@@ -1130,11 +1130,6 @@ document.querySelectorAll('.f-submit, .btn-fill, .nav-book').forEach(el => {
   el.addEventListener('mouseenter', () => { cur.classList.add('big'); cur.classList.add('inv'); });
   el.addEventListener('mouseleave', () => { cur.classList.remove('big'); cur.classList.remove('inv'); });
 });
-
-// Render email at runtime to prevent obfuscation
-var u = 'info', d = 'stackstudionyc.com';
-var el = document.getElementById('contact-email');
-if (el) { el.href = 'mailto:' + u + '@' + d; el.textContent = u + '@' + d; }
 
 // Form
 document.querySelector('form[name="inquiry"]').addEventListener('submit', function(e) {
